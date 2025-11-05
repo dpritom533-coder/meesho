@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Modern Kurti - Meesho's</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #e91e63;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    form {
+      background: white;
+      margin: 30px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #e91e63;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #c2185b;
+    }
+  </style>
+</head>
+<body>
+  <header>Order Modern Wear Kurti</header>
+  <form id="orderForm">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="text" name="mobile" placeholder="Contact Number" required>
+    <input type="text" name="address" placeholder="Full Address" required>
+    <input type="text" name="pincode" placeholder="Pincode" required>
+    <select name="state" required>
+      <option value="">Select State</option>
+      <option>Andhra Pradesh</option>
+      <option>Assam</option>
+      <option>Bihar</option>
+      <option>Tripura</option>
+      <option>West Bengal</option>
+      <option>Manipur</option>
+      <option>Mizoram</option>
+      <option>Odisha</option>
+      <option>Uttar Pradesh</option>
+      <option>Maharashtra</option>
+      <option>Other</option>
+    </select>
+    <label><b>Select Size:</b></label>
+    <select name="size" required>
+      <option>XS</option>
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+      <option>XXL</option>
+      <option>XXXL</option>
+      <option>4XL</option>
+    </select>
+    <button type="submit">Submit Order</button>
+  </form>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzz6BX5AUTlNrsaTd5qNsICL_xD4qBt2W4izkaera9kQShMx2ZAgWLAx7XVwBMCevrxYw/exec";
+    document.getElementById('orderForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      data.product = "Modern Wear Kurti";
+      data.price = "299";
+
+      fetch(scriptURL, { method: 'POST', body: JSON.stringify(data) })
+        .then(() => alert("✅ Order placed successfully!"))
+        .catch(() => alert("❌ Error submitting form!"));
+    });
+  </script>
+</body>
+</html>
